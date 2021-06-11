@@ -1,6 +1,7 @@
 import fs from "fs";
 import moment from "moment";
 import React, { useState } from "react";
+import { useAllAuntDates } from "../graphql/api";
 
 // 读取日期文件
 const getDate = async () => {
@@ -27,6 +28,11 @@ const calcNextDate = async () => {
 
 export default function Container({ nextDate }) {
   const [value, setValue] = useState(null);
+
+  const { data } = useAllAuntDates();
+  if (data) {
+    console.log(data);
+  }
 
   return (
     <>
