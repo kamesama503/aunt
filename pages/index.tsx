@@ -102,8 +102,7 @@ export default function Main() {
           onChange={(event) => setName(event.target.value)}
         />
         <Typography variant="body1" className={classes.text}>
-          下次降临：
-          <Chip color="secondary" label={calcNextDate()} />
+          下次降临：{calcNextDate()}
         </Typography>
         <Grid container spacing={1} justify="center" alignItems="center">
           <Grid item xs={10}>
