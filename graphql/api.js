@@ -14,13 +14,7 @@ function getErrorMessage(error, data) {
 }
 
 /**
-|--------------------------------------------------
-| This GraphQL query returns an array of Guestbook
-| entries complete with both the provided and implicit
-| data attributes.
-|
-| Learn more about GraphQL: https://graphql.org/learn/
-|--------------------------------------------------
+* 获取所有数据
 */
 export const useAllAuntDates = () => {
   const query = `query AllAuntDates{
@@ -56,21 +50,9 @@ export const useAllAuntDates = () => {
 }
 
 /**
-|--------------------------------------------------
-| This GraphQL mutation creates a new GuestbookEntry
-| with the requisite twitter handle and story arguments.
-|
-| It returns the stored data and includes the unique
-| identifier (_id) as well as _ts (time created).
-|
-| The guestbook uses the _id value as the unique key
-| and the _ts value to sort and display the date of
-| publication.
-|
-| Learn more about GraphQL mutations: https://graphql.org/learn/queries/#mutations
-|--------------------------------------------------
+* 新建单条数据
 */
-export const createGuestbookEntry = async (twitterHandle, story) => {
+export const createAuntDate = async (name, date) => {
   const query = `mutation CreateAuntDate($name: String!, $date: Date!) {
     createAuntDate(data: { name: $name, date: $date }) {
       name
@@ -88,7 +70,7 @@ export const createGuestbookEntry = async (twitterHandle, story) => {
     },
     body: JSON.stringify({
       query,
-      variables: { twitterHandle, story },
+      variables: { name, date },
     }),
   })
   const data = await res.json()
