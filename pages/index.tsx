@@ -50,8 +50,7 @@ export default function Main() {
   const userDates = dates
     ?.filter((date) => date.name == name)
     .map((date) => date.date)
-    .sort()
-    .reverse();
+    .sort();
 
   // 计算下次时间
   const calcNextDate = () => {
@@ -138,7 +137,7 @@ export default function Main() {
         <Table className={classes.table}>
           <TableHead>历史数据</TableHead>
           <TableBody>
-            {userDates?.map((row) => {
+            {userDates?.reverse().map((row) => {
               console.log(row);
               return (
                 <TableRow>
