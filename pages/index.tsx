@@ -14,15 +14,13 @@ export default function Container() {
   const userDates = dates
     ?.filter((date) => date.name == name)
     .map((date) => date.date);
-  console.log("userDates", userDates);
 
   // 计算下次时间
   const calcNextDate = () => {
-    const length = userDates.length;
+    const length = userDates?.length;
     if (length > 1) {
       let total = 0;
       for (let i = 1; i < length; i++) {
-        console.log("userDates[i]", userDates[i]);
         const diff = moment(userDates[i]).diff(
           moment(userDates[i - 1]),
           "days"
@@ -31,7 +29,6 @@ export default function Container() {
       }
       const avgDiff = Math.round(total / (length - 1));
       const nextDate = moment(userDates[length - 1]).add(avgDiff, "days");
-      console.log(nextDate.format("YYYY-MM-DD"));
       return nextDate.format("YYYY-MM-DD");
     } else {
       return "数据不足，无法计算";
